@@ -10,8 +10,19 @@ class Node<T> {
   
   class Source {
     public static <T> Node<T> reverseList(Node<T> head) {
-      // todo
-      return head;
+      Node<T> prev = null;
+      Node<T> current = head;
+      Node<T> nextNode = null;
+
+      while (current != null) {
+          nextNode = current.next; // Save the next node temporarily
+          current.next = prev; // Reverse the link
+
+          prev = current; 
+          current = nextNode;
+      }
+      // prev is the new head
+      return prev;
     }
     
     public static void main(String[] args) {
